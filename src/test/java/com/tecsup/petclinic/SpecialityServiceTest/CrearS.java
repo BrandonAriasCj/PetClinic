@@ -19,20 +19,20 @@ public class CrearS {
 
     @Test
     public void testCreateSpecialty() {
-        String NAME = "Neurology";
-        String OFFICE = "305B";
-        int H_OPEN = 8;
-        int H_CLOSE = 16;
+        String name = "Neurology";
+        String office = "305B";
+        int h_open = 8;
+        int h_close = 16;
 
-        Speciality speciality = new Speciality(NAME, OFFICE, H_OPEN, H_CLOSE);
+        Speciality speciality = new Speciality(name, office, h_open, h_close);
 
         Speciality created = this.specialtiesService.create(speciality);
         log.info("SPECIALITY CREATED: " + created);
 
         assertNotNull(created.getId());
-        assertEquals(NAME, created.getName());
-        assertEquals(OFFICE, created.getOffice());
-        assertEquals(H_OPEN, created.getHOpen());
-        assertEquals(H_CLOSE, created.getHClose());
+        assertEquals(name, created.getName());
+        assertEquals(office, created.getOffice());
+        assertEquals(h_open, created.getHOpen());
+        assertEquals(h_close, created.getHClose());
     }
 }
