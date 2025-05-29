@@ -27,7 +27,7 @@ public class CrearS {
         Speciality speciality = new Speciality(NAME, OFFICE, H_OPEN, H_CLOSE);
 
         Speciality created = this.specialtiesService.create(speciality);
-        log.info("SPECIALTY CREATED: " + created);
+        log.info("SPECIALITY CREATED: " + created);
 
         assertNotNull(created.getId());
         assertEquals(NAME, created.getName());
