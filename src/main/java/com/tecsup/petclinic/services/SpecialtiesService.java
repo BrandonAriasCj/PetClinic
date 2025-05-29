@@ -1,7 +1,8 @@
 package com.tecsup.petclinic.services;
 
 import java.util.List;
-import
+import com.tecsup.petclinic.entities.Specialty;
+
 public interface SpecialtiesService.java {
 
     @param
