@@ -17,7 +17,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.tecsup.petclinic.entities.Pet;
 import com.tecsup.petclinic.exception.PetNotFoundException;
-import com.tecsup.petclinic.repositories.PetRepository;
 import com.tecsup.petclinic.util.TObjectCreator;
 
 import lombok.extern.slf4j.Slf4j;
