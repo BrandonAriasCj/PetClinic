@@ -5,15 +5,17 @@ import java.util.Optional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import com.tecsup.petclinic.entities.Pet;
-import com.tecsup.petclinic.exception.PetNotFoundException;
+import com.tecsup.petclinic.entities.Speciality;
+import com.tecsup.petclinic.exception.SpecialityNotFoundException;
+
 
 @Service
-public SpecialtiesServiceImpl implements SepecialtiesService{
+@Slf4j
+public SpecialtiesServiceImpl implements SpecialtiesService{
 
-    private final Sepcialties SpecialtyRepository;
+    private final Specialties SpecialtyRepository;
 
-    public SpecialtiesServiceImpl(SpeacialtyRepository sepcialtyRepository){
+    public SpecialtiesServiceImpl(SpecialtyRepository specialtyRepository){
 
     }
 }
