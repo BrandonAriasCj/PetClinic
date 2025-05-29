@@ -1,6 +1,7 @@
 package com.tecsup.petclinic.SpecialityServiceTest;
 
 import com.tecsup.petclinic.entities.Speciality;
+import com.tecsup.petclinic.services.SpecialtiesService;
 import lombok.extern.slf4j.Slf4j;
 
 import org.junit.jupiter.api.Test;
@@ -14,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class Crear{
 
     @Autowired
-    private SpecialityService specialityService;
+    private SpecialtiesService specialtiesService;
 
     @Test
     public void testCreateSpecialty() {
@@ -25,7 +26,7 @@ public class Crear{
 
         Speciality speciality = new Speciality(NAME, OFFICE, H_OPEN, H_CLOSE);
 
-        Speciality created = this.specialityService.create(speciality);
+        Speciality created = this.specialtiesService.create(speciality);
         log.info("SPECIALTY CREATED: " + created);
 
         assertNotNull(created.getId());
