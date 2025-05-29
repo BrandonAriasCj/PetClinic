@@ -94,6 +94,8 @@
 					</annotationProcessorPaths>
 				</configuration>
 			</plugin>
+
+
 		</plugins>
 	</build>
 
