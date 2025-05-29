@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.tecsup.petclinic.entities.Pet;
 import com.tecsup.petclinic.exception.PetNotFoundException;
-import com.tecsup.petclinic.repositories.PetRepository;
 
 /**
  * 
