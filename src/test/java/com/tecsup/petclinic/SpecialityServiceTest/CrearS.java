@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Slf4j
-public class Crear{
+public class CrearS {
 
     @Autowired
     private SpecialtiesService specialtiesService;
