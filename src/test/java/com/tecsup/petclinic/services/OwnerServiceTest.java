@@ -5,7 +5,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 @Slf4j
-public class OwnerServiceTest {
+public class actualizar {
 
 	//@Autowired
    //	private OwnerService ownerService;
