@@ -37,13 +37,14 @@ public class Actualizar {
         //log.info(">>" + SpecialityCreated);
 
         // ------------ Update ---------------
-        String UPGRATE_NAME = "Carlos";
 
-        String UPGRATE_OFICCE = "Cardiologia";
+        String UPGRATE_NAME = "Sebas";
+        String UPGRATE_OFICCE = "Neurologia";
         int UPGRATE_hOpen = 11;
         int UPGRATE_hClose = 13;
 
         // Prepare data for update
+        SpecialityCreated.setId(ID);
         SpecialityCreated.setName(UPGRATE_NAME);
         SpecialityCreated.setOffice(UPGRATE_OFICCE);
         SpecialityCreated.sethClose(UPGRATE_hOpen);

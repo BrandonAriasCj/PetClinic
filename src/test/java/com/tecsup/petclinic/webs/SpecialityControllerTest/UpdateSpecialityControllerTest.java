@@ -3,7 +3,7 @@ package com.tecsup.petclinic.webs.SpecialityControllerTest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jayway.jsonpath.JsonPath;
-import com.tecsup.petclinic.dtos.PetDTO;
+import com.tecsup.petclinic.dtos.SpecialityDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,24 +33,29 @@ public class UpdateSpecialityControllerTest {
 
     public void testUpdatePet() throws Exception {
 
-        String PET_NAME = "Beethoven4";
-        int TYPE_ID = 1;
-        int OWNER_ID = 1;
-        String BIRTH_DATE = "2020-05-20";
+        int ID = 15;
+        String NAME = "Carlos";
 
-        String UP_PET_NAME = "Beethoven5";
-        int UP_OWNER_ID = 2;
-        int UP_TYPE_ID = 2;
+        String OFICCE = "Cardiologia";
+        int hOpen = 11;
+        int hClose = 13;
 
-        PetDTO newPetTO = new PetDTO();
-        newPetTO.setName(PET_NAME);
-        newPetTO.setTypeId(TYPE_ID);
-        newPetTO.setOwnerId(OWNER_ID);
-        newPetTO.setBirthDate(BIRTH_DATE);
+
+        String UPGRATE_NAME = "Sebas";
+
+        String UPGRATE_OFICCE = "Neurologia";
+        int UPGRATE_hOpen = 11;
+        int UPGRATE_hClose = 13;
+
+        SpecialityDTO newSpecialTO = new SpecialityDTO();
+        newSpecialTO.setName(NAME);
+        newSpecialTO.setOffice(OFICCE);
+        newSpecialTO.setHOpen(hOpen);
+        newSpecialTO.setHClose(hClose);
 
         // CREATE
-        ResultActions mvcActions = mockMvc.perform(post("/pets")
-                        .content(om.writeValueAsString(newPetTO))
+        ResultActions mvcActions = mockMvc.perform(post("/specialities")
+                        .content(om.writeValueAsString(newSpecialTO))
                         .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isCreated());
@@ -59,30 +64,33 @@ public class UpdateSpecialityControllerTest {
         Integer id = JsonPath.parse(response).read("$.id");
 
         // UPDATE
-        PetDTO upPetTO = new PetDTO();
-        upPetTO.setId(id);
-        upPetTO.setName(UP_PET_NAME);
-        upPetTO.setTypeId(UP_TYPE_ID);
-        upPetTO.setOwnerId(UP_OWNER_ID);
+        SpecialityDTO upSpecialTO = new SpecialityDTO();
+        upSpecialTO.setId(id);
+        upSpecialTO.setName(UPGRATE_NAME);
+        upSpecialTO.setOffice(UPGRATE_OFICCE);
+        upSpecialTO.setHOpen(UPGRATE_hOpen);
+        upSpecialTO.setHClose(UPGRATE_hClose);
 
-        mockMvc.perform(put("/pets/"+id)
-                        .content(om.writeValueAsString(upPetTO))
+
+        mockMvc.perform(put("/specialities/"+id)
+                        .content(om.writeValueAsString(upSpecialTO))
                         .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk());
 
         // FIND
-        mockMvc.perform(get("/pets/" + id))  //
+        mockMvc.perform(get("/specialities/" + id))  //
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id", is(id)))
-                .andExpect(jsonPath("$.name", is(UP_PET_NAME)))
-                .andExpect(jsonPath("$.typeId", is(UP_TYPE_ID)))
-                .andExpect(jsonPath("$.ownerId", is(UP_OWNER_ID)));
+                .andExpect(jsonPath("$.name", is(UPGRATE_NAME)))
+                .andExpect(jsonPath("$.office", is(UPGRATE_OFICCE)))
+                .andExpect(jsonPath("$.hopen", is(UPGRATE_hOpen)))
+                .andExpect(jsonPath("$.hclose", is(UPGRATE_hClose)));
 
         // DELETE
-        mockMvc.perform(delete("/pets/" + id))
+        mockMvc.perform(delete("/specialities/" + id))
                 /*.andDo(print())*/
                 .andExpect(status().isOk());
     }

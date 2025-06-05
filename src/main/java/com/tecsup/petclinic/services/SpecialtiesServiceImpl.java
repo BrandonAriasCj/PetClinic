@@ -27,7 +27,7 @@ public class SpecialtiesServiceImpl implements SpecialtiesService {
 
     @Override
     public Speciality update(Speciality Speciality) {
-        return SpecialtyRepository.update(Speciality);
+        return SpecialtyRepository.save(Speciality);
     }
 
     @Override
