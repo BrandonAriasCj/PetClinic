@@ -2,6 +2,8 @@ package com.tecsup.petclinic.SpecialityServiceTest;
 
 import com.tecsup.petclinic.entities.Speciality;
 import com.tecsup.petclinic.repositories.SpecialtyRepository;
+import com.tecsup.petclinic.services.SpecialtiesService;
+import com.tecsup.petclinic.services.SpecialtyServiceTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,23 +18,45 @@ public class Actualizar {
 
     private Speciality speciality;
 
-    @BeforeEach
-    public void setUp() {
-
-        speciality = new Speciality("Cardiology", "Room 101", 9, 17);
-    }
-
     @Test
-    public void testCreateSpeciality() {
+    public void testUpdateSpecialty() {
 
-        Speciality savedSpeciality = specialtyRepository.save(speciality);
+        int ID = 15;
+        String NAME = "Carlos";
 
+        String OFICCE = "Cardiologia";
+        int hOpen = 11;
+        int hClose = 13;
 
-        assertNotNull(savedSpeciality);
-        assertNotNull(savedSpeciality.getId());
-        assertEquals("Cardiology", savedSpeciality.getName());
-        assertEquals("Room 101", savedSpeciality.getOffice());
-        assertEquals(9, savedSpeciality.gethOpen());
-        assertEquals(17, savedSpeciality.gethClose());
+        speciality = new Speciality(ID, NAME, OFICCE, hOpen, hClose);
+
+        // ------------ Create ---------------
+
+        //log.info(">" + speciality);
+        Speciality SpecialityCreated = SpecialtiesService.create(speciality);
+        //log.info(">>" + SpecialityCreated);
+
+        // ------------ Update ---------------
+        String UPGRATE_NAME = "Carlos";
+
+        String UPGRATE_OFICCE = "Cardiologia";
+        int UPGRATE_hOpen = 11;
+        int UPGRATE_hClose = 13;
+
+        // Prepare data for update
+        SpecialityCreated.setName(UPGRATE_NAME);
+        SpecialityCreated.setOffice(UPGRATE_OFICCE);
+        SpecialityCreated.sethClose(UPGRATE_hOpen);
+        SpecialityCreated.sethClose(UPGRATE_hClose);
+
+        // Execute update
+        Speciality upgradeSpeciality = SpecialtiesService.update(SpecialityCreated);
+        //log.info(">>>>" + upgradeSpeciality);
+
+        //            EXPECTED        ACTUAL
+        assertEquals(UPGRATE_NAME, upgradeSpeciality.getName());
+        assertEquals(UPGRATE_OFICCE, upgradeSpeciality.getOffice());
+        assertEquals(UPGRATE_hOpen, upgradeSpeciality.gethOpen());
+        assertEquals(UPGRATE_hClose, upgradeSpeciality.gethClose());
     }
 }
