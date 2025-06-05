@@ -28,7 +28,5 @@ public class buscar {
 
         assertNotNull(foundSpecialty);
         assertEquals(savedSpecialty.getId(),foundSpecialty.getId());
-
-
     }
 }

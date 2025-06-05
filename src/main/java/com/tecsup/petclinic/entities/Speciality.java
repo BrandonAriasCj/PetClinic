@@ -15,10 +15,50 @@ public class Speciality {
 
     private String office;
 
-    @Column(name = "h_open")
+    @Column(name = "hOpen")
     private int hOpen;
 
-    @Column(name = "h_close")
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getOffice() {
+        return office;
+    }
+
+    public void setOffice(String office) {
+        this.office = office;
+    }
+
+    public int gethOpen() {
+        return hOpen;
+    }
+
+    public void sethOpen(int hOpen) {
+        this.hOpen = hOpen;
+    }
+
+    public int gethClose() {
+        return hClose;
+    }
+
+    public void sethClose(int hClose) {
+        this.hClose = hClose;
+    }
+
+    @Column(name = "hClose")
     private int hClose;
 
     public Speciality() {
