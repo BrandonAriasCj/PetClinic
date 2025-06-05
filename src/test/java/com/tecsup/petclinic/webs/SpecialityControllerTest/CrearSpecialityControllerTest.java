@@ -1,4 +1,4 @@
-package com.tecsup.petclinic.webs.SpecialityControllerTest.;
+package com.tecsup.petclinic.webs.SpecialityControllerTest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tecsup.petclinic.dtos.SpecialityDTO;
@@ -11,6 +11,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
@@ -24,15 +25,29 @@ public class CrearSpecialityControllerTest {
 
     @Test
     public void testCrearSpeciality() throws Exception {
-        SpecialityDTO speciality = new SpecialityDTO("Cardiology", "A203", 8, 17);
 
-        mockMvc.perform(post("/specialities")
-                        .content(om.writeValueAsString(speciality))
+        String name = "Cardiology";
+        String office = "A203";
+        int hOpen = 8;
+        int hClose = 17;
+
+        SpecialityDTO newSpecialityDTO = new SpecialityDTO();
+        newSpecialityDTO.setName(name);
+        newSpecialityDTO.setOffice(office);
+        newSpecialityDTO.setHOpen(hOpen);
+        newSpecialityDTO.setHClose(hClose);
+
+        this.mockMvc.perform(post("/specialities")
+                        .content(om.writeValueAsString(newSpecialityDTO))
                         .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON))
+                .andDo(print())
                 .andExpect(status().isCreated())
-                .andExpect(jsonPath("$.name").value("Cardiology"))
-                .andExpect(jsonPath("$.office").value("A203"))
-                .andExpect(jsonPath("$.hOpen").value(8))
-                .andExpect(jsonPath("$.hClose").value(17));
+                .andExpect(jsonPath("$.name").value(name))
+                .andExpect(jsonPath("$.office").value(office))
+                .andExpect(jsonPath("$.hOpen").value(hOpen))
+                .andExpect(jsonPath("$.hClose").value(hClose));
     }
 }
+
+
+
