@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-public class CrearS {
+public class Crear {
 
     @Autowired
     private SpecialtyRepository specialtyRepository;
@@ -22,15 +22,22 @@ public class CrearS {
     }
 
     @Test
-    public void testCreateSpeciality() {
-        Speciality savedSpeciality = specialtyRepository.save(speciality);
+    public void testCreateSpecialty() {
+        String name = "Neurology";
+        String office = "305B";
+        int h_open = 8;
+        int h_close = 16;
 
-        assertNotNull(savedSpeciality);
-        assertNotNull(savedSpeciality.getId());
-        assertEquals("Cardiology", savedSpeciality.getName());
-        assertEquals("Room 101", savedSpeciality.getOffice());
-        assertEquals(9, savedSpeciality.gethOpen());
-        assertEquals(17, savedSpeciality.gethClose());
+        Speciality speciality = new Speciality(name, office, h_open, h_close);
+
+        Speciality created = specialtyRepository.save(speciality);
+        System.out.println("SPECIALITY CREATED: " + created);
+
+        assertNotNull(created.getId());
+        assertEquals(name, created.getName());
+        assertEquals(office, created.getOffice());
+        assertEquals(h_open, created.gethOpen());
+        assertEquals(h_close, created.gethClose());
     }
 }
 
