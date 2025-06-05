@@ -18,6 +18,11 @@
 		<java.version>17</java.version>
 		<org.projectlombok.version>1.18.32</org.projectlombok.version>
 		<org.mapstruct.version>1.5.5.Final</org.mapstruct.version>
+
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
+
+
 	</properties>
 
 	<dependencies>
@@ -75,6 +80,11 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>java/lang/ExceptionInInitializerError.java</exclude>
+					</excludes>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
