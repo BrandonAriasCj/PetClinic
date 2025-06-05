@@ -31,7 +31,7 @@ public class UpdateSpecialityControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
-    public void testUpdatePet() throws Exception {
+    public void testUpdateSpecialities() throws Exception {
 
         int ID = 15;
         String NAME = "Carlos";
