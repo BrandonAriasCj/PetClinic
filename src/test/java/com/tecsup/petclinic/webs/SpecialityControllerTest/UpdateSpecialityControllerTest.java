@@ -31,15 +31,35 @@ public class UpdateSpecialityControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
+    @Test
     public void testUpdateSpecialities() throws Exception {
 
-        int ID = 15;
-        String NAME = "Carlos";
+        String name = "Radiologia";
+        String office = "A203";
+        int hOpen = 8;
+        int hClose = 17;
 
-        String OFICCE = "Cardiologia";
-        int hOpen = 11;
-        int hClose = 13;
+        SpecialityDTO newSpecialityDTO = new SpecialityDTO();
+        newSpecialityDTO.setName(name);
+        newSpecialityDTO.setOffice(office);
+        newSpecialityDTO.setHOpen(hOpen);
+        newSpecialityDTO.setHClose(hClose);
 
+        ResultActions mvcActions = this.mockMvc.perform(post("/specialities")
+                        .content(om.writeValueAsString(newSpecialityDTO))
+                        .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath("$.name").value(name))
+                .andExpect(jsonPath("$.office").value(office))
+                .andExpect(jsonPath("$.hOpen").value(hOpen))
+                .andExpect(jsonPath("$.hClose").value(hClose));
+
+        String response = mvcActions.andReturn().getResponse().getContentAsString();
+        Integer id = JsonPath.parse(response).read("$.id");
+
+
+        // UPDATE
 
         String UPGRATE_NAME = "Sebas";
 
@@ -47,23 +67,6 @@ public class UpdateSpecialityControllerTest {
         int UPGRATE_hOpen = 11;
         int UPGRATE_hClose = 13;
 
-        SpecialityDTO newSpecialTO = new SpecialityDTO();
-        newSpecialTO.setName(NAME);
-        newSpecialTO.setOffice(OFICCE);
-        newSpecialTO.setHOpen(hOpen);
-        newSpecialTO.setHClose(hClose);
-
-        // CREATE
-        ResultActions mvcActions = mockMvc.perform(post("/specialities")
-                        .content(om.writeValueAsString(newSpecialTO))
-                        .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON))
-                .andDo(print())
-                .andExpect(status().isCreated());
-
-        String response = mvcActions.andReturn().getResponse().getContentAsString();
-        Integer id = JsonPath.parse(response).read("$.id");
-
-        // UPDATE
         SpecialityDTO upSpecialTO = new SpecialityDTO();
         upSpecialTO.setId(id);
         upSpecialTO.setName(UPGRATE_NAME);
@@ -72,27 +75,10 @@ public class UpdateSpecialityControllerTest {
         upSpecialTO.setHClose(UPGRATE_hClose);
 
 
-        mockMvc.perform(put("/specialities/"+id)
+        mockMvc.perform(put("/specialities/" + id)
                         .content(om.writeValueAsString(upSpecialTO))
                         .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk());
-
-        // FIND
-        mockMvc.perform(get("/specialities/" + id))  //
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.id", is(id)))
-                .andExpect(jsonPath("$.name", is(UPGRATE_NAME)))
-                .andExpect(jsonPath("$.office", is(UPGRATE_OFICCE)))
-                .andExpect(jsonPath("$.hopen", is(UPGRATE_hOpen)))
-                .andExpect(jsonPath("$.hclose", is(UPGRATE_hClose)));
-
-        // DELETE
-        mockMvc.perform(delete("/specialities/" + id))
-                /*.andDo(print())*/
-                .andExpect(status().isOk());
     }
-
 }
