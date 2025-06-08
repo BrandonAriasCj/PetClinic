@@ -61,9 +61,8 @@ public class UpdateSpecialityControllerTest {
 
         // UPDATE
 
-        String UPGRATE_NAME = "Sebas";
-
-        String UPGRATE_OFICCE = "Neurologia";
+        String UPGRATE_NAME = "Neurologia";
+        String UPGRATE_OFICCE = "A204";
         int UPGRATE_hOpen = 11;
         int UPGRATE_hClose = 13;
 
@@ -75,7 +74,7 @@ public class UpdateSpecialityControllerTest {
         upSpecialTO.setHClose(UPGRATE_hClose);
 
 
-        mockMvc.perform(put("/specialities/" + id)
+        mockMvc.perform(put("/specialities/update/" + id)
                         .content(om.writeValueAsString(upSpecialTO))
                         .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON))
                 .andDo(print())

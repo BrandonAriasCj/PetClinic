@@ -44,6 +44,29 @@ public class SpecialityController {
     }
 
     /**
+     * Update especiality
+     */
+    @PutMapping("/specialities/update/{id}")
+    public ResponseEntity<SpecialityDTO> update(@RequestBody SpecialityDTO specialityDTO, @PathVariable Integer id) {
+        try {
+            Speciality existing = specialtiesService.findById(id);
+
+            existing.setName(specialityDTO.getName());
+            existing.setOffice(specialityDTO.getOffice());
+            existing.setHOpen(specialityDTO.getHOpen());
+            existing.setHClose(specialityDTO.getHClose());
+
+            Speciality updated = specialtiesService.update(existing);
+
+            return ResponseEntity.ok(mapper.toDTO(updated));
+
+        } catch (SpecialityNotFoundException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+
+    /**
      * Find speciality by ID
      */
     @GetMapping("/specialities/{id}")
