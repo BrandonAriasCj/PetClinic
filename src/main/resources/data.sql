@@ -14,3 +14,11 @@ VALUES
 ('Freddy', '2000-03-09', 5, 9),
 ('Lucky', '2000-06-24', 2, 10),
 ('Sly', '2002-06-08', 1, 10);
+
+
+INSERT INTO specialties (name, office, hOpen, hClose)
+VALUES
+    ('Neurology', '101', 8, 17),
+    ('Cardiology', '202', 9, 18),
+    ('Dermatology', '303', 10, 16),
+    ('Orthopedics', '404', 7, 15);
