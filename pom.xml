@@ -82,7 +82,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
 					<excludes>
-						<exclude>java/lang/ExceptionInInitializerError.java</exclude>
+
 					</excludes>
 				</configuration>
 			</plugin>
