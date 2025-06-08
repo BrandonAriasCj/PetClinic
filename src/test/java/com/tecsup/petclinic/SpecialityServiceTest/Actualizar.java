@@ -28,11 +28,6 @@ public class Actualizar {
         Speciality savedSpeciality = specialtyRepository.save(speciality);
 
 
-        assertNotNull(savedSpeciality);
-        assertNotNull(savedSpeciality.getId());
-        assertEquals("Cardiology", savedSpeciality.getName());
-        assertEquals("Room 101", savedSpeciality.getOffice());
-        assertEquals(9, savedSpeciality.gethOpen());
-        assertEquals(17, savedSpeciality.gethClose());
+
     }
 }

@@ -48,6 +48,3 @@ public class CrearSpecialityControllerTest {
                 .andExpect(jsonPath("$.hClose").value(hClose));
     }
 }
-
-
-

@@ -3,7 +3,6 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import com.tecsup.petclinic.entities.Speciality;
-
 @Repository
 public interface SpecialtyRepository extends JpaRepository<Speciality, Integer> {
 
@@ -11,10 +10,11 @@ public interface SpecialtyRepository extends JpaRepository<Speciality, Integer> 
 
     List<Speciality> findByOffice(String office);
 
-    List<Speciality> findByHOpen(int hOpen);
+    List<Speciality> findByhOpen(int hOpen);
 
-    List<Speciality> findByHClose(int hClose);
+    List<Speciality> findByhClose(int hClose);
 
     @Override
     List<Speciality> findAll();
 }
+
