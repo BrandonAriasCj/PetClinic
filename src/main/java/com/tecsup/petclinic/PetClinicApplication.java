@@ -10,13 +10,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @SpringBootApplication
 public class PetClinicApplication {
-
-	/**
-	 * 
-	 * @param args
-	 */
 	public static void main(String[] args) {
 		SpringApplication.run(PetClinicApplication.class, args);
 	}
-
 }
+

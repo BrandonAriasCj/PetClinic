@@ -3,16 +3,19 @@ package com.tecsup.petclinic.mapper;
 import com.tecsup.petclinic.dtos.SpecialityDTO;
 import com.tecsup.petclinic.entities.Speciality;
 import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
+import org.mapstruct.NullValueMappingStrategy;
 
-@Mapper(componentModel = "spring")
+import java.util.List;
+
+@Mapper(componentModel = "spring", nullValueMappingStrategy = NullValueMappingStrategy.RETURN_DEFAULT)
 public interface SpecialityMapper {
 
-    SpecialityMapper INSTANCE = Mappers.getMapper(SpecialityMapper.class);
 
-    SpecialityDTO toSpecialityDTO(Speciality speciality);
-    Speciality toSpeciality(SpecialityDTO specialityDTO);
+    SpecialityDTO toDTO(Speciality speciality);
+
+    Speciality toEntity(SpecialityDTO specialityDTO);
+
+    List<Speciality> toEntityList(List<SpecialityDTO> specialityDTOs);
+
+    List<SpecialityDTO> toDTOList(List<Speciality> specialities);
 }
-
-
-
