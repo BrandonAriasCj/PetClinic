@@ -6,9 +6,9 @@ import com.tecsup.petclinic.exception.SpecialityNotFoundException;
 
 public interface SpecialtiesService {
 
-    static Speciality create(Speciality speciality);
+    Speciality create(Speciality speciality);
 
-    static Speciality update(Speciality speciality);
+    Speciality update(Speciality speciality);
 
     void delete(Integer id) throws SpecialityNotFoundException;
 
