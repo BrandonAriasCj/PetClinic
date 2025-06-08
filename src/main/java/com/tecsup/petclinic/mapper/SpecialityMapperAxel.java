@@ -10,22 +10,22 @@ import org.mapstruct.factory.Mappers;
 import java.util.List;
 
 @Mapper(componentModel = "spring", nullValueMappingStrategy = NullValueMappingStrategy.RETURN_DEFAULT)
-public interface SpecialityMapper {
+public interface SpecialityMapperAxel {
 
-    SpecialityMapper INSTANCE = Mappers.getMapper(SpecialityMapper.class);
+    SpecialityMapperAxel INSTANCE = Mappers.getMapper(SpecialityMapperAxel.class);
 
     @Mapping(source = "id", target = "id")
     @Mapping(source = "name", target = "name")
     @Mapping(source = "office", target = "office")
-    @Mapping(source = "hOpen", target = "hOpen")
-    @Mapping(source = "hClose", target = "hClose")
+    @Mapping(source = "hOpen", target = "HOpen")
+    @Mapping(source = "hClose", target = "HClose")
     SpecialityDTO toDTO(Speciality speciality);
 
     @Mapping(source = "id", target = "id")
     @Mapping(source = "name", target = "name")
     @Mapping(source = "office", target = "office")
-    @Mapping(source = "hOpen", target = "hOpen")
-    @Mapping(source = "hClose", target = "hClose")
+    @Mapping(source = "HOpen", target = "hOpen")
+    @Mapping(source = "HClose", target = "hClose")
     Speciality toEntity(SpecialityDTO specialityDTO);
 
     List<Speciality> toEntityList(List<SpecialityDTO> specialityDTOs);

@@ -15,7 +15,7 @@ public class Speciality {
 
     private String office;
 
-    @Column(name = "hOpen")
+    @Column(name = "h_open")
     private int hOpen;
 
     public Integer getId() {
@@ -58,7 +58,7 @@ public class Speciality {
         this.hClose = hClose;
     }
 
-    @Column(name = "hClose")
+    @Column(name = "h_close")
     private int hClose;
 
     public Speciality() {

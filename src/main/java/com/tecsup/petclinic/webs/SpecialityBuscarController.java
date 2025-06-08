@@ -3,7 +3,7 @@ package com.tecsup.petclinic.webs;
 import com.tecsup.petclinic.dtos.SpecialityDTO;
 import com.tecsup.petclinic.entities.Speciality;
 import com.tecsup.petclinic.exception.SpecialityNotFoundException;
-import com.tecsup.petclinic.mapper.SpecialityMapper;
+import com.tecsup.petclinic.mapper.SpecialityMapperAxel;
 import com.tecsup.petclinic.services.SpecialtiesService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -18,9 +18,9 @@ import java.util.List;
 @Slf4j
 public class SpecialityBuscarController {
     private final SpecialtiesService specialtiesService;
-    private final SpecialityMapper mapper;
+    private final SpecialityMapperAxel mapper;
 
-    public SpecialityBuscarController(SpecialtiesService specialityService, SpecialityMapper mapper) {
+    public SpecialityBuscarController(SpecialtiesService specialityService, SpecialityMapperAxel mapper) {
         this.specialtiesService = specialityService;
         this.mapper = mapper;
     }

@@ -41,9 +41,9 @@ public class FindControllerTest {
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id", is(specialtyId)))
-                .andExpect(jsonPath("$.name", is("neurology")))
-                .andExpect(jsonPath("$.office").exists())
-                .andExpect(jsonPath("$.hOpen").exists())
-                .andExpect(jsonPath("$.hClose").exists());
+                .andExpect(jsonPath("$.name", is("radiology")))
+                .andExpect(jsonPath("$.office",is("Farewell")))
+                .andExpect(jsonPath("$.hopen",is(8)))
+                .andExpect(jsonPath("$.hclose",is(18)));
     }
 }
