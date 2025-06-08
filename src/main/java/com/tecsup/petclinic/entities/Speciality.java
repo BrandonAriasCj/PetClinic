@@ -1,7 +1,7 @@
 package com.tecsup.petclinic.entities;
+
 import jakarta.persistence.*;
 import lombok.Data;
-
 
 @Entity(name = "specialties")
 @Data
@@ -17,6 +17,32 @@ public class Speciality {
 
     @Column(name = "h_open")
     private int hOpen;
+
+    @Column(name = "h_close")
+    private int hClose;
+
+    // Constructor vacío (requerido por JPA)
+    public Speciality() {
+    }
+
+    // Constructor con todos los atributos
+    public Speciality(Integer id, String name, String office, int hOpen, int hClose) {
+        this.id = id;
+        this.name = name;
+        this.office = office;
+        this.hOpen = hOpen;
+        this.hClose = hClose;
+    }
+
+    // Constructor sin ID (para crear nuevos objetos)
+    public Speciality(String name, String office, int hOpen, int hClose) {
+        this.name = name;
+        this.office = office;
+        this.hOpen = hOpen;
+        this.hClose = hClose;
+    }
+
+    // Getters y setters personalizados para evitar errores con MapStruct
 
     public Integer getId() {
         return id;
@@ -42,40 +68,19 @@ public class Speciality {
         this.office = office;
     }
 
-    public int gethOpen() {
+    public int getHOpen() {
         return hOpen;
     }
 
-    public void sethOpen(int hOpen) {
+    public void setHOpen(int hOpen) {
         this.hOpen = hOpen;
     }
 
-    public int gethClose() {
+    public int getHClose() {
         return hClose;
     }
 
-    public void sethClose(int hClose) {
-        this.hClose = hClose;
-    }
-
-    @Column(name = "h_close")
-    private int hClose;
-
-    public Speciality() {
-    }
-
-    public Speciality(Integer id, String name, String office, int hOpen, int hClose) {
-        this.id = id;
-        this.name = name;
-        this.office = office;
-        this.hOpen = hOpen;
-        this.hClose = hClose;
-    }
-
-    public Speciality(String name, String office, int hOpen, int hClose) {
-        this.name = name;
-        this.office = office;
-        this.hOpen = hOpen;
+    public void setHClose(int hClose) {
         this.hClose = hClose;
     }
 }

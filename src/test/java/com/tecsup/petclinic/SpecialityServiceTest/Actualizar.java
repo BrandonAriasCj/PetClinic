@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-public class Crear {
+public class Actualizar {
 
     @Autowired
     private SpecialtyRepository specialtyRepository;
@@ -18,22 +18,16 @@ public class Crear {
 
     @BeforeEach
     public void setUp() {
+
         speciality = new Speciality("Cardiology", "Room 101", 9, 17);
     }
 
     @Test
-    public void testCreateSpecialty() {
-        String name = "Neurology";
-        String office = "305B";
-        int h_open = 8;
-        int h_close = 16;
+    public void testCreateSpeciality() {
 
-        Speciality speciality = new Speciality(name, office, h_open, h_close);
+        Speciality savedSpeciality = specialtyRepository.save(speciality);
 
-        Speciality created = specialtyRepository.save(speciality);
-        System.out.println("SPECIALITY CREATED: " + created);
 
 
     }
 }
-

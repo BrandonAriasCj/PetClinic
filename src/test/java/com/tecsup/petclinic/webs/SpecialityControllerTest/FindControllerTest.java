@@ -43,7 +43,7 @@ public class FindControllerTest {
                 .andExpect(jsonPath("$.id", is(specialtyId)))
                 .andExpect(jsonPath("$.name", is("radiology")))
                 .andExpect(jsonPath("$.office",is("Farewell")))
-                .andExpect(jsonPath("$.hopen",is(8)))
-                .andExpect(jsonPath("$.hclose",is(18)));
+                .andExpect(jsonPath("$.hOpen",is(8)))
+                .andExpect(jsonPath("$.hClose",is(18)));
     }
 }
