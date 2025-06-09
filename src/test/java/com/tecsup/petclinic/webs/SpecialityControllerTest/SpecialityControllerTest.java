@@ -3,7 +3,7 @@ package com.tecsup.petclinic.webs.SpecialityControllerTest;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jayway.jsonpath.JsonPath;
 import com.tecsup.petclinic.dtos.SpecialityDTO;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -20,6 +20,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class SpecialityControllerTest {
 
     @Autowired
@@ -28,6 +29,7 @@ public class SpecialityControllerTest {
     private static final ObjectMapper om = new ObjectMapper();
 
     @Test
+    @Order(1)
     public void testCrearSpeciality() throws Exception {
 
         String name = "Cardiology";
@@ -53,12 +55,10 @@ public class SpecialityControllerTest {
     }
 
 
-    //private static final ObjectMapper om = new ObjectMapper();
 
-    //@Autowired
-    //private MockMvc mockMvc;
 
     @Test
+    @Order(2)
     public void testUpdateSpecialities() throws Exception {
 
         String name = "Radiologia";
@@ -110,12 +110,10 @@ public class SpecialityControllerTest {
 
     private static final ObjectMapper MAPPER = new ObjectMapper();
 
-    //@Autowired
-    //private MockMvc mockMvc;
-
 
 
     @Test
+    @Order(2)
     public void findAll() throws Exception {
         int buscarid = 1;
 
@@ -125,6 +123,7 @@ public class SpecialityControllerTest {
                 .andExpect(jsonPath("$[0].id", is(buscarid)));
     }
     @Test
+    @Order(3)
     public void findSpecialty() throws Exception {
         int specialtyId = 1;
 
@@ -138,5 +137,6 @@ public class SpecialityControllerTest {
                 .andExpect(jsonPath("$.hOpen",is(8)))
                 .andExpect(jsonPath("$.hClose",is(17)));
     }
+
 }
 
