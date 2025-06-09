@@ -132,10 +132,10 @@ public class SpecialityControllerTest {
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id", is(specialtyId)))
-                .andExpect(jsonPath("$.name", is("radiology")))
-                .andExpect(jsonPath("$.office",is("Farewell")))
+                .andExpect(jsonPath("$.name", is("Cardiology")))
+                .andExpect(jsonPath("$.office",is("A203")))
                 .andExpect(jsonPath("$.hOpen",is(8)))
-                .andExpect(jsonPath("$.hClose",is(18)));
+                .andExpect(jsonPath("$.hClose",is(17)));
     }
 }
 
