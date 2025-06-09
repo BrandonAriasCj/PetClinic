@@ -113,6 +113,8 @@ public class SpecialityControllerTest {
     //@Autowired
     //private MockMvc mockMvc;
 
+
+
     @Test
     public void findAll() throws Exception {
         int buscarid = 1;
@@ -122,7 +124,6 @@ public class SpecialityControllerTest {
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(jsonPath("$[0].id", is(buscarid)));
     }
-
     @Test
     public void findSpecialty() throws Exception {
         int specialtyId = 1;
